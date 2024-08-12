@@ -1,21 +1,64 @@
-A simple next.js starter built using shadcn-ui, magic-ui components along with a dark-mode toggle
+# Next Magic UI Starter
 
+Tento projekt je startovací šablona pro vývoj webových aplikací s využitím Next.js a Magic UI komponent.
 
-<img width="1059" alt="Screenshot 2024-05-06 at 07 26 40" src="https://github.com/rajeshdavidbabu/next-magic-ui-starter/assets/15684795/1e722e40-ff48-4a34-80c6-45fcaf170508">
-<img width="1024" alt="Screenshot 2024-05-06 at 07 28 25" src="https://github.com/rajeshdavidbabu/next-magic-ui-starter/assets/15684795/0eb482d5-2678-4df5-b284-e17b9babc778">
+## Funkce
 
+- Next.js framework pro React aplikace
+- Tailwind CSS pro stylování
+- Magic UI komponenty pro atraktivní uživatelské rozhraní
+- Storybook pro vývoj a testování komponent
+- TypeScript pro typovou bezpečnost
 
-## Getting Started
+## Instalace
 
-First, run the development server:
+1. Naklonujte repozitář:
+   ```
+   git clone [URL_REPOZITÁŘE]
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. Nainstalujte závislosti:
+   ```
+   npm install
+   ```
+
+3. Spusťte vývojový server:
+   ```
+   npm run dev
+   ```
+
+## Struktura projektu
+
+- `components/`: Obsahuje všechny React komponenty
+- `pages/`: Next.js stránky
+- `styles/`: Globální styly a Tailwind konfigurace
+- `public/`: Statické soubory
+- `stories/`: Storybook příběhy pro komponenty
+
+## Použité komponenty
+
+- HeroHighlight: Komponenta pro zvýraznění hlavního textu na stránce s efektem postupného objevování textu
+
+## Vývoj
+
+Pro vývoj nových komponent použijte Storybook:
+
+```
+npm run storybook
 ```
 
+## Nasazení
+
+Pro build produkční verze:
+
+```
+npm run build
+```
+
+## Přispívání
+
+Příspěvky jsou vítány. Prosím, otevřete issue nebo pull request pro jakékoliv návrhy nebo opravy.
+
+## Licence
+
+[MIT](https://choosealicense.com/licenses/mit/)
