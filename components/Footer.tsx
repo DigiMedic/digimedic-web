@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 import { Github, Twitter, Facebook, Mail, Phone, MapPin } from "lucide-react";
 
 // Asset imports
-import Logo from "@/public/Brand-manual-DigiMedic/Brand materials/DigiMedic-logo-long.svg";
+import Logo from "../public/stakeholders logos/logo.png";
 
 // Health Icons SVG (příklad ikony nemocnice)
 const HospitalIcon = () => (
@@ -21,6 +21,24 @@ const HospitalIcon = () => (
   </svg>
 );
 
+/**
+ * Footer component for the DigiMedic website.
+ * 
+ * This component displays the main footer of the website, including:
+ * - Company logo
+ * - Brief description
+ * - Contact icons
+ * - Site navigation links
+ * - Legal information links
+ * - Social media buttons
+ * - Copyright notice
+ * 
+ * @component
+ * @example
+ * ```jsx
+ * <Footer />
+ * ```
+ */
 export default function Footer() {
   return (
     <footer className="bg-primary-faintest">

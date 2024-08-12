@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface Icon {
   name: string;
@@ -14,9 +15,19 @@ const IconCloud: React.FC<IconCloudProps> = ({ icons = [] }) => {
     <div>
       {/* Placeholder for IconCloud component */}
       <p>IconCloud component (placeholder)</p>
-      {icons.map((icon, index) => (
-        <img key={index} src={icon.src} alt={icon.name} style={{ width: 50, height: 50, margin: 5 }} />
-      ))}
+      <div className="flex flex-wrap">
+        {icons.map((icon, index) => (
+          <div key={index} className="m-1">
+            <Image
+              src={icon.src}
+              alt={icon.name}
+              width={50}
+              height={50}
+              className="object-contain"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

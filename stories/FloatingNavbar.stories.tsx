@@ -1,5 +1,5 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import FloatingNavbar from "../components/FloatingNavbar";
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: FloatingNavbar,
 } as Meta;
 
-const Template: Story = (args) => <FloatingNavbar {...args} />;
+const Template: StoryFn = (args: any) => <FloatingNavbar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
@@ -18,7 +18,7 @@ Visible.parameters = {
   backgrounds: { default: "dark" },
 };
 Visible.decorators = [
-  (Story) => (
+  (Story: StoryFn) => (
     <div style={{ paddingTop: "100px" }}>
       <Story />
     </div>

@@ -1,4 +1,4 @@
-export default {
+const SEO = {
   titleTemplate: '%s | DigiMedic',
   defaultTitle: 'DigiMedic - Digitální Páteř Českého Zdravotnictví',
   description: 'DigiMedic poskytuje moderní technologická řešení pro zlepšení kvality a dostupnosti zdravotní péče v České republice.',
@@ -14,3 +14,5 @@ export default {
     cardType: 'summary_large_image',
   },
 };
+
+export default SEO;

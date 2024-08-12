@@ -7,7 +7,7 @@ export const TextGenerateEffect: React.FC<{
 }> = ({ words, threshold = 0.5 }) => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold });
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView) {
