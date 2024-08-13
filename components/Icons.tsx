@@ -1,4 +1,4 @@
-import { Home, FileText, Phone, Users, Rocket, Mail, MapPin, Github, Twitter, Facebook, Shield } from 'lucide-react';
+import { Home, FileText, Phone, Users, Rocket, Mail, MapPin, Github, Twitter, Facebook, Shield, MonitorSmartphone, BarChart3, Bot, Smartphone } from 'lucide-react';
 import { HospitalIcon, DoctorIcon, MedicalResearchIcon } from './HealthIcons';
 
 const WhatsApp = () => (
@@ -40,8 +40,14 @@ export const Icons = {
   HospitalIcon,
   DoctorIcon,
   MedicalResearchIcon,
+  MonitorSmartphone,
+  BarChart3,
+  Bot,
+  Smartphone,
   whatsapp: WhatsApp,
   notion: Notion,
   googleDrive: GoogleDrive,
   gitHub: Github,
-};
+} as const;
+
+export type IconName = keyof typeof Icons;

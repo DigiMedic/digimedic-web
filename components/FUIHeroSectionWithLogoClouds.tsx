@@ -47,7 +47,7 @@ export default function FUIHeroSectionWithLogoClouds() {
           </div>
           <div className="flex-none mt-14 md:mt-0 md:max-w-xl">
             <Image
-              src="/Brand-manual-DigiMedic/Brand materials/digitalni pater.png"
+              src="/Brand materials/digitalni pater.png"
               alt="DigiMedic Hero Image"
               width={600}
               height={400}

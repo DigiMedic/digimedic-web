@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
-import { Home } from './Icons';
+import { Home } from 'lucide-react'; // Update import to use lucide-react
 
 interface NavItem {
   href: string;
@@ -65,7 +65,7 @@ const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
       <ul className="flex items-center space-x-6">
         <li>
           <Link href="/" className={`${textColor} ${hoverColor} transition-colors`}>
-            <Home size={24} />
+            <Home className="w-6 h-6" /> {/* Adjust Home icon size */}
           </Link>
         </li>
         {navItems.map((item, index) => (

@@ -24,14 +24,14 @@ export default function Home() {
             Naše projekty a iniciativy mají jediný cíl: <strong>zlepšit zdravotní péči v České republice</strong>.
           </p>
           <Image
-            src="/Brand-materials/INTEREPROABILNI SIT.png"
+            src="/Brand materials/INTEREPROABILNI SIT.png"
             alt="Interoperabilní síť"
             width={600}
             height={400}
             className="mx-auto mb-4"
           />
           <Image
-            src="/Brand-materials/digitalni oater.svg"
+            src="/Brand materials/digitalni pater.svg"
             alt="Digitální páteř"
             width={600}
             height={400}

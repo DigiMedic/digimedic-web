@@ -23,9 +23,9 @@ const Header = () => {
             <Image
               src="/Brand materials/DigiMedic-logo-long.svg"
               alt="DigiMedic Logo"
-              width={160}  // Změněno z 200 na 160 (80% z původní hodnoty)
-              height={36}  // Změněno z 45 na 36 (80% z původní hodnoty)
-              className="h-8 w-auto"  // Změněno z h-10 na h-8
+              width={160}
+              height={36}
+              className="h-8 w-auto"
             />
           </motion.div>
         </Link>
