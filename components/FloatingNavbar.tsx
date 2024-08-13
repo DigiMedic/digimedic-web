@@ -3,9 +3,34 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
-import { Home } from 'lucide-react';
+import { Home } from './Icons';
 
-const FloatingNavbar = () => {
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface FloatingNavbarProps {
+  navItems?: NavItem[];
+  backgroundColor?: string;
+  textColor?: string;
+  hoverColor?: string;
+}
+
+const defaultNavItems: NavItem[] = [
+  { href: "/sluzby", label: "Služby" },
+  { href: "/projekty", label: "Projekty" },
+  { href: "/o-nas", label: "O nás" },
+  { href: "/kontakt", label: "Kontakt" },
+  { href: "/blog", label: "Blog" },
+];
+
+const FloatingNavbar: React.FC<FloatingNavbarProps> = ({
+  navItems = defaultNavItems,
+  backgroundColor = "bg-white",
+  textColor = "text-gray-700",
+  hoverColor = "hover:text-gray-900",
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const controls = useAnimation();
 
@@ -32,22 +57,24 @@ const FloatingNavbar = () => {
 
   return (
     <motion.nav
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-primary-faintest rounded-full shadow-lg px-6 py-3 z-50"
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 ${backgroundColor} rounded-full shadow-lg px-6 py-3 z-50`}
       initial={{ y: -100, opacity: 0 }}
       animate={controls}
       transition={{ duration: 0.3 }}
     >
       <ul className="flex items-center space-x-6">
         <li>
-          <Link href="/" className="text-primary hover:text-primary-light transition-colors">
+          <Link href="/" className={`${textColor} ${hoverColor} transition-colors`}>
             <Home size={24} />
           </Link>
         </li>
-        <li><Link href="/sluzby" className="text-primary hover:text-primary-light transition-colors font-space font-bold">Služby</Link></li>
-        <li><Link href="/projekty" className="text-primary hover:text-primary-light transition-colors font-space font-bold">Projekty</Link></li>
-        <li><Link href="/o-nas" className="text-primary hover:text-primary-light transition-colors font-space font-bold">O nás</Link></li>
-        <li><Link href="/kontakt" className="text-primary hover:text-primary-light transition-colors font-space font-bold">Kontakt</Link></li>
-        <li><Link href="/blog" className="text-primary hover:text-primary-light transition-colors font-space font-bold">Blog</Link></li>
+        {navItems.map((item, index) => (
+          <li key={index}>
+            <Link href={item.href} className={`${textColor} ${hoverColor} transition-colors font-regular`}>
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </motion.nav>
   );

@@ -5,21 +5,8 @@ import Link from "next/link";
 // UI component imports
 import { Button } from "./ui/button";
 
-// Icon imports from Lucide
-import { Github, Twitter, Facebook, Mail, Phone, MapPin } from "lucide-react";
-
-// Asset imports
-import Logo from "../public/stakeholders logos/logo.png";
-
-// Health Icons SVG (příklad ikony nemocnice)
-const HospitalIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" fill="none">
-    <path d="M33 11H15C13.8954 11 13 11.8954 13 13V39C13 40.1046 13.8954 41 15 41H33C34.1046 41 35 40.1046 35 39V13C35 11.8954 34.1046 11 33 11Z" fill="#333333"/>
-    <path d="M17 7H31V11H17V7Z" fill="#333333"/>
-    <path d="M23 21V31" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M18 26H28" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
+// Icon imports
+import { Github, Twitter, Facebook, Mail, Phone, MapPin, FileText, Shield, HospitalIcon } from "./Icons";
 
 /**
  * Footer component for the DigiMedic website.
@@ -48,10 +35,10 @@ export default function Footer() {
             <Link href="/">
               <h3 className="sr-only">DigiMedic</h3>
               <Image
-                src={Logo}
+                src="/Brand materials/DigiMedic-logo-long.svg"
                 alt="DigiMedic Logo"
-                width={120}
-                height={27.27}
+                width={200}
+                height={45}
                 className="transition-all hover:opacity-75 dark:invert"
               />
             </Link>
@@ -62,20 +49,38 @@ export default function Footer() {
               <Mail className="w-5 h-5" />
               <Phone className="w-5 h-5" />
               <MapPin className="w-5 h-5" />
-              <HospitalIcon />
+              <HospitalIcon size={20} />
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <h5 className="font-bold">Webové stránky</h5>
-            <Link href="/blog">Blog</Link>
-            <Link href="/sluzby">Služby</Link>
-            <Link href="/o-nas">O nás</Link>
+            <Link href="/blog" className="flex items-center gap-2">
+              <FileText size={16} />
+              Blog
+            </Link>
+            <Link href="/sluzby" className="flex items-center gap-2">
+              <HospitalIcon size={16} />
+              Služby
+            </Link>
+            <Link href="/o-nas" className="flex items-center gap-2">
+              <Shield size={16} />
+              O nás
+            </Link>
           </div>
           <div className="flex flex-col gap-2">
             <h5 className="font-bold">Právní informace</h5>
-            <Link href="/ochrana-soukromi">Ochrana soukromí</Link>
-            <Link href="/obchodni-podminky">Obchodní podmínky</Link>
-            <Link href="/cookie-policy">Zásady používání cookies</Link>
+            <Link href="/ochrana-soukromi" className="flex items-center gap-2">
+              <Shield size={16} />
+              Ochrana soukromí
+            </Link>
+            <Link href="/obchodni-podminky" className="flex items-center gap-2">
+              <FileText size={16} />
+              Obchodní podmínky
+            </Link>
+            <Link href="/cookie-policy" className="flex items-center gap-2">
+              <Shield size={16} />
+              Zásady používání cookies
+            </Link>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4">

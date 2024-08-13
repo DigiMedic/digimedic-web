@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
@@ -15,13 +16,18 @@ const Header = () => {
     <header className="bg-primary-bg py-4">
       <div className="container mx-auto flex justify-between items-center px-4">
         <Link href="/">
-          <motion.img
-            src="/logo-long.svg"
-            alt="DigiMedic Logo"
-            className="h-10"
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-          />
+          >
+            <Image
+              src="/Brand materials/DigiMedic-logo-long.svg"
+              alt="DigiMedic Logo"
+              width={160}  // Změněno z 200 na 160 (80% z původní hodnoty)
+              height={36}  // Změněno z 45 na 36 (80% z původní hodnoty)
+              className="h-8 w-auto"  // Změněno z h-10 na h-8
+            />
+          </motion.div>
         </Link>
         <nav className="hidden md:block">
           <ul className="flex space-x-6">

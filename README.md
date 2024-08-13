@@ -1,16 +1,61 @@
-# Next Magic UI Starter
+# DigiMedic - Digitální páteř českého zdravotnictví
 
-Tento projekt je startovací šablona pro vývoj webových aplikací s využitím Next.js a Magic UI komponent.
+DigiMedic je inovativní platforma zaměřená na digitalizaci a optimalizaci procesů ve zdravotnictví. Naším cílem je přinášet efektivitu, přesnost a lepší péči o pacienty.
 
-## Funkce
+## Projektový Brief
 
-- Next.js framework pro React aplikace
+### Vize
+Stát se vedoucí digitální platformou v českém zdravotnictví, která propojuje zdravotnická zařízení, pacienty a poskytovatele zdravotní péče, a tím zlepšuje kvalitu a dostupnost zdravotní péče.
+
+### Mise
+Poskytovat inovativní technologická řešení, která zefektivňují procesy ve zdravotnictví, snižují administrativní zátěž a umožňují zdravotnickým pracovníkům soustředit se na to nejdůležitější - péči o pacienty.
+
+### Cílová skupina
+- Zdravotnická zařízení (nemocnice, kliniky, ambulance)
+- Zdravotničtí pracovníci (lékaři, sestry, administrativní personál)
+- Pacienti
+- Zdravotní pojišťovny
+- Státní instituce v oblasti zdravotnictví
+
+### Klíčové funkce
+1. Digitalizace zdravotnické dokumentace
+2. Telemedicína a vzdálené konzultace
+3. Optimalizace procesů a workflow ve zdravotnických zařízeních
+4. Analýza zdravotnických dat pro lepší rozhodování
+5. Bezpečné sdílení informací mezi poskytovateli zdravotní péče
+
+## Roadmapa
+
+### Fáze 1: Základní infrastruktura (Q3 2024)
+- [x] Vytvoření základní webové prezentace
+- [ ] Implementace systému pro správu uživatelů a přístupových práv
+- [ ] Vývoj API pro integraci s existujícími nemocničními systémy
+
+### Fáze 2: Klíčové funkce (Q4 2024 - Q1 2025)
+- [ ] Implementace modulu pro digitalizaci zdravotnické dokumentace
+- [ ] Vývoj platformy pro telemedicínu a vzdálené konzultace
+- [ ] Vytvoření dashboardu pro analýzu zdravotnických dat
+
+### Fáze 3: Rozšíření a optimalizace (Q2 2025 - Q3 2025)
+- [ ] Integrace s hlavními poskytovateli zdravotního pojištění
+- [ ] Implementace pokročilých analytických nástrojů a prediktivních modelů
+- [ ] Vývoj mobilní aplikace pro pacienty
+
+### Fáze 4: Škálování a expanze (Q4 2025 a dále)
+- [ ] Rozšíření služeb do dalších regionů ČR
+- [ ] Implementace modulů pro specifické zdravotnické obory
+- [ ] Vývoj řešení pro mezinárodní trh
+
+## Technologie
+
+- Next.js pro frontend
 - Tailwind CSS pro stylování
-- Magic UI komponenty pro atraktivní uživatelské rozhraní
-- Storybook pro vývoj a testování komponent
 - TypeScript pro typovou bezpečnost
+- Storybook pro vývoj a testování komponent
+- Node.js a Express pro backend (plánováno)
+- PostgreSQL pro databázi (plánováno)
 
-## Instalace
+## Instalace a spuštění
 
 1. Naklonujte repozitář:
    ```
@@ -27,33 +72,19 @@ Tento projekt je startovací šablona pro vývoj webových aplikací s využití
    npm run dev
    ```
 
+4. Pro spuštění Storybooku:
+   ```
+   npm run storybook
+   ```
+
 ## Struktura projektu
 
-- `components/`: Obsahuje všechny React komponenty
+- `components/`: React komponenty
 - `pages/`: Next.js stránky
-- `styles/`: Globální styly a Tailwind konfigurace
-- `public/`: Statické soubory
+- `public/`: Statické soubory a assets
+- `styles/`: Globální styly
+- `lib/`: Utility a pomocné funkce
 - `stories/`: Storybook příběhy pro komponenty
-
-## Použité komponenty
-
-- HeroHighlight: Komponenta pro zvýraznění hlavního textu na stránce s efektem postupného objevování textu
-
-## Vývoj
-
-Pro vývoj nových komponent použijte Storybook:
-
-```
-npm run storybook
-```
-
-## Nasazení
-
-Pro build produkční verze:
-
-```
-npm run build
-```
 
 ## Přispívání
 

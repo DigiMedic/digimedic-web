@@ -1,6 +1,11 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj, StoryFn } from '@storybook/react';
 import Footer from '../components/Footer';
+
+interface FooterArgs {
+  backgroundColor?: string;
+  textColor?: string;
+}
 
 const meta: Meta<typeof Footer> = {
   title: 'Components/Footer',
@@ -30,9 +35,9 @@ export const CustomColors: Story = {
     backgroundColor: '#f0f0f0',
     textColor: '#333333',
   },
-  render: (args) => (
+  render: ((args: FooterArgs) => (
     <div style={{ backgroundColor: args.backgroundColor, color: args.textColor }}>
       <Footer />
     </div>
-  ),
+  )) as StoryFn<typeof Footer>,
 };
