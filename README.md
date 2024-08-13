@@ -23,6 +23,8 @@ Poskytovat inovativní technologická řešení, která zefektivňují procesy v
 3. Optimalizace procesů a workflow ve zdravotnických zařízeních
 4. Analýza zdravotnických dat pro lepší rozhodování
 5. Bezpečné sdílení informací mezi poskytovateli zdravotní péče
+6. Vizualizace stakeholderů pomocí OrbitingCircles komponenty
+7. Prezentace partnerských log s použitím StakeholderOrbitingLogos
 
 ## Roadmapa
 
@@ -52,6 +54,7 @@ Poskytovat inovativní technologická řešení, která zefektivňují procesy v
 - Tailwind CSS pro stylování
 - TypeScript pro typovou bezpečnost
 - Storybook pro vývoj a testování komponent
+- React pro tvorbu uživatelského rozhraní
 - Node.js a Express pro backend (plánováno)
 - PostgreSQL pro databázi (plánováno)
 
@@ -77,14 +80,32 @@ Poskytovat inovativní technologická řešení, která zefektivňují procesy v
    npm run storybook
    ```
 
+## Testování
+
+Pro spuštění testů použijte následující příkaz:
+
+```
+npm test
+```
+
+Tento příkaz spustí všechny testy v projektu. Pro spuštění testů v watch módu použijte:
+
+```
+npm run test:watch
+```
+
 ## Struktura projektu
 
 - `components/`: React komponenty
+  - `magicui/`: Speciální UI komponenty jako OrbitingCircles
 - `pages/`: Next.js stránky
 - `public/`: Statické soubory a assets
+  - `Brand materials/`: Loga a brandingové materiály
+  - `stakeholders logos/`: Loga partnerů a stakeholderů
 - `styles/`: Globální styly
 - `lib/`: Utility a pomocné funkce
 - `stories/`: Storybook příběhy pro komponenty
+- `tests/`: Jednotkové a integrační testy
 
 ## Přispívání
 

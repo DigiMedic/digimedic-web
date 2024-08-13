@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import OrbitingCircles from '../components/magicui/orbiting-circles';
 import { OrbitingCirclesDemo } from '../components/OrbitingCirclesDemo';
+import StakeholderOrbitingLogos from '../components/StakeholderOrbitingLogos';
 import { Icons } from '../components/Icons';
 
 const meta: Meta<typeof OrbitingCircles> = {
@@ -49,6 +50,19 @@ export const LargerRadius: Story = {
   },
 };
 
+export const WithImage: Story = {
+  args: {
+    image: "/stakeholders logos/ehdsi_logo_en_0.png",
+    duration: 20,
+    delay: 0,
+    radius: 80,
+  },
+};
+
 export const FullDemo: StoryObj<typeof OrbitingCirclesDemo> = {
   render: () => <OrbitingCirclesDemo />,
+};
+
+export const StakeholderLogos: StoryObj<typeof StakeholderOrbitingLogos> = {
+  render: () => <StakeholderOrbitingLogos />,
 };
