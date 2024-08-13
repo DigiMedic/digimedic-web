@@ -3,6 +3,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import AnimatedShinyText from "./magicui/animated-shiny-text";
 
 export default function FUIHeroSectionWithLogoClouds() {
   const stakeholderLogos = [
@@ -17,10 +18,10 @@ export default function FUIHeroSectionWithLogoClouds() {
       <section className="py-28">
         <div className="max-w-screen-xl mx-auto text-primary gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
           <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
-            <h1 className="text-sm text-primary-light group font-geist mr-auto px-5 py-2 bg-gradient-to-tr from-primary/5 via-primary-light/5 to-transparent border-[2px] border-primary/5 rounded-3xl w-fit">
+            <AnimatedShinyText className="text-sm text-primary-light group font-geist px-5 py-2 bg-gradient-to-tr from-primary/5 via-primary-light/5 to-transparent border-[2px] border-primary/5 rounded-3xl inline-block">
               Digitální páteř českého zdravotnictví
               <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
-            </h1>
+            </AnimatedShinyText>
             <h2 className="text-4xl md:text-5xl font-geist font-normal tracking-tighter lg:text-5xl text-primary">
               Pomáháme zdravotnickým zařízením růst a poskytovat lepší péči
             </h2>
