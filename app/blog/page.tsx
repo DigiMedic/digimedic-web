@@ -42,6 +42,7 @@ interface BlogPost {
 // }
 
 export default async function BlogPage() {
+  // const blogPosts = await getBlogPosts();
   const blogPosts: BlogPost[] = [];
   const featuredPost = blogPosts[0];
   const otherPosts = blogPosts.slice(1);
