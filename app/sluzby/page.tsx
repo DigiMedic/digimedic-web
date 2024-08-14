@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
-import { Icons, IconName } from '../../components/Icons';
-import { GoogleGeminiEffect } from '../../components/ui/google-gemini-effect';
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { Icons, IconName } from "../../components/Icons";
+import { GoogleGeminiEffect } from "../../components/ui/google-gemini-effect";
 
 interface Service {
   title: string;
@@ -14,34 +14,40 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'Vývoj softwaru na míru',
-    description: 'Vytváříme specializovaný software pro zdravotnická zařízení, který odpovídá jejich specifickým potřebám a požadavkům.',
-    icon: 'MonitorSmartphone',
+    title: "Vývoj softwaru na míru",
+    description:
+      "Vytváříme specializovaný software pro zdravotnická zařízení, který odpovídá jejich specifickým potřebám a požadavkům.",
+    icon: "MonitorSmartphone",
   },
   {
-    title: 'Implementace technologických řešení',
-    description: 'Pomáháme zdravotnickým zařízením implementovat nejnovější technologie pro zefektivnění jejich procesů a zlepšení péče o pacienty.',
-    icon: 'Rocket',
+    title: "Implementace technologických řešení",
+    description:
+      "Pomáháme zdravotnickým zařízením implementovat nejnovější technologie pro zefektivnění jejich procesů a zlepšení péče o pacienty.",
+    icon: "Rocket",
   },
   {
-    title: 'Kontrola vyúčtování',
-    description: 'Nabízíme služby kontroly a optimalizace vyúčtování zdravotní péče pro maximalizaci příjmů a minimalizaci chyb.',
-    icon: 'BarChart3',
+    title: "Kontrola vyúčtování",
+    description:
+      "Nabízíme služby kontroly a optimalizace vyúčtování zdravotní péče pro maximalizaci příjmů a minimalizaci chyb.",
+    icon: "BarChart3",
   },
   {
-    title: 'Virtuální asistence',
-    description: 'Poskytujeme virtuální asistenční služby pro efektivní správu administrativních úkolů ve zdravotnictví.',
-    icon: 'Bot',
+    title: "Virtuální asistence",
+    description:
+      "Poskytujeme virtuální asistenční služby pro efektivní správu administrativních úkolů ve zdravotnictví.",
+    icon: "Bot",
   },
   {
-    title: 'Asistence při elektronizaci',
-    description: 'Podporujeme zdravotnická zařízení při přechodu na elektronické systémy a digitalizaci procesů.',
-    icon: 'Smartphone',
+    title: "Asistence při elektronizaci",
+    description:
+      "Podporujeme zdravotnická zařízení při přechodu na elektronické systémy a digitalizaci procesů.",
+    icon: "Smartphone",
   },
   {
-    title: 'Optimalizace zdravotnických procesů',
-    description: 'Analyzujeme a optimalizujeme procesy ve zdravotnických zařízeních pro zvýšení efektivity a kvality péče.',
-    icon: 'HospitalIcon',
+    title: "Optimalizace zdravotnických procesů",
+    description:
+      "Analyzujeme a optimalizujeme procesy ve zdravotnických zařízeních pro zvýšení efektivity a kvality péče.",
+    icon: "HospitalIcon",
   },
 ];
 
@@ -52,9 +58,9 @@ const ServicesPage = () => {
     offset: ["start start", "end start"],
   });
 
-  const pathLengths = Array.from({ length: 5 }).map((_, i) =>
-    useTransform(scrollYProgress, [0, 1], [0.1, 1])
-  );
+  const pathLength = useTransform(scrollYProgress, [0, 1], [0.1, 1]);
+
+  const pathLengths = Array.from({ length: 5 }).map(() => pathLength);
 
   return (
     <div className="min-h-screen">
@@ -67,7 +73,9 @@ const ServicesPage = () => {
       </section>
       <section className="bg-white">
         <div className="container mx-auto py-20">
-          <h2 className="text-4xl font-spaceBold text-primary mb-12 text-center">Přehled našich služeb</h2>
+          <h2 className="text-4xl font-spaceBold text-primary mb-12 text-center">
+            Přehled našich služeb
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
               const Icon = Icons[service.icon];
@@ -82,9 +90,16 @@ const ServicesPage = () => {
                   <div className="text-4xl mb-4 text-primary">
                     <Icon size={48} />
                   </div>
-                  <h3 className="text-2xl font-spaceBold text-primary mb-4">{service.title}</h3>
-                  <p className="font-raleway text-primary-light mb-4">{service.description}</p>
-                  <Link href={`/sluzby/${service.title.toLowerCase().replace(/ /g, '-')}`} className="text-primary font-spaceBold hover:text-primary-light transition-colors duration-300">
+                  <h3 className="text-2xl font-spaceBold text-primary mb-4">
+                    {service.title}
+                  </h3>
+                  <p className="font-raleway text-primary-light mb-4">
+                    {service.description}
+                  </p>
+                  <Link
+                    href={`/sluzby/${service.title.toLowerCase().replace(/ /g, "-")}`}
+                    className="text-primary font-spaceBold hover:text-primary-light transition-colors duration-300"
+                  >
                     Zjistit více →
                   </Link>
                 </motion.div>
@@ -95,9 +110,14 @@ const ServicesPage = () => {
       </section>
       <section className="bg-primary-faintest py-20">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-spaceBold text-primary mb-12 text-center">Proč zvolit naše služby</h2>
+          <h2 className="text-4xl font-spaceBold text-primary mb-12 text-center">
+            Proč zvolit naše služby
+          </h2>
           <p className="text-center text-primary-light mb-8">
-            Nabízíme komplexní řešení šitá na míru potřebám vašeho zdravotnického zařízení. Naše služby jsou založeny na nejnovějších technologiích a osvědčených postupech v oblasti digitalizace zdravotnictví.
+            Nabízíme komplexní řešení šitá na míru potřebám vašeho
+            zdravotnického zařízení. Naše služby jsou založeny na nejnovějších
+            technologiích a osvědčených postupech v oblasti digitalizace
+            zdravotnictví.
           </p>
         </div>
       </section>
