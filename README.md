@@ -2,6 +2,8 @@
 
 DigiMedic je inovativní platforma zaměřená na digitalizaci a optimalizaci procesů ve zdravotnictví. Naším cílem je přinášet efektivitu, přesnost a lepší péči o pacienty.
 
+#potrebatreba Fix Build
+
 ## Projektový Brief
 
 [... obsah zkrácen pro přehlednost ...]
