@@ -1,8 +1,6 @@
 import FUIHeroSectionWithLogoClouds from '@/components/FUIHeroSectionWithLogoClouds'
 import FAQ from '@/components/FAQ'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
@@ -32,7 +30,7 @@ export default function Home() {
               className="rounded-lg shadow-md"
             />
             <Image
-              src="/Brand materials/digitalni pater.svg"
+              src="/Brand materials/digitalni oater.svg"
               alt="Digitální páteř"
               width={400}
               height={300}

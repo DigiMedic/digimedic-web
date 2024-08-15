@@ -1,102 +1,55 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+import { getSinglePost, getPosts } from '@/lib/ghost';
+import Image from 'next/image';
 
-interface BlogPost {
-  id: number;
-  attributes: {
-    title: string;
-    content: string;
-    date: string;
-    author: string;
-    image: {
-      data: {
-        attributes: {
-          url: string;
-        };
-      };
-    };
-    category: string;
-  };
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  try {
+    const post = await getSinglePost(params.slug);
+
+    if (!post) {
+      return <div>Post not found</div>;
+    }
+
+    return (
+      <article className="max-w-4xl mx-auto px-4 py-12">
+        <h1 className="text-4xl md:text-5xl font-spaceBold text-primary mb-4">{post.title}</h1>
+        <div className="mb-8 text-primary-light">
+          <span>{new Date(post.published_at).toLocaleDateString('cs-CZ')}</span>
+          <span> | </span>
+          <span>{post.primary_author.name}</span>
+        </div>
+        {post.feature_image && (
+          <div className="mb-8">
+            <Image
+              src={post.feature_image}
+              alt={post.title}
+              width={1200}
+              height={630}
+              layout="responsive"
+              className="rounded-lg"
+            />
+          </div>
+        )}
+        <div
+          className="prose lg:prose-xl"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+      </article>
+    );
+  } catch (err) {
+    console.error('Error loading blog post', err);
+    return (
+      <article className="max-w-4xl mx-auto px-4 py-12">        
+        <h1 className="text-4xl md:text-5xl font-spaceBold text-primary mb-4">Post not found</h1>
+        <p className="text-primary-light">An error occurred while loading the blog post.</p>
+      </article>
+    );
+  }
 }
 
-// const STRAPI_API_URL = 'https://your-strapi-cloud-url.com/api'; // Nahraďte skutečnou URL vašeho Strapi Cloud
-//
-// async function getBlogPost(slug: string): Promise<BlogPost> {
-//   const res = await fetch(`${STRAPI_API_URL}/blog-posts/${slug}?populate=*`, {
-//     headers: {
-//       'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`,
-//     },
-//     next: { revalidate: 60 }
-//   });
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch blog post');
-//   }
-//   const data = await res.json();
-//   return data.data;
-// }
-//
-// async function getBlogPosts(): Promise<BlogPost[]> {
-//   const res = await fetch(`${STRAPI_API_URL}/blog-posts?populate=*`, {
-//     headers: {
-//       'Authorization': `Bearer ${process.env.STRAPI_API_TOKEN}`,
-//     },
-//     next: { revalidate: 60 }
-//   });
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch blog posts');
-//   }
-//   const data = await res.json();
-//   return data.data;
-// }
-
-// export async function generateStaticParams() {
-//   const posts = await getBlogPosts();
-//   return posts.map((post) => ({
-//     slug: post.id.toString(),
-//   }));
-// }
-
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  // const post = await getBlogPost(params.slug);
-  //
-  // if (!post) {
-  //   return <div>Příspěvek nebyl nalezen</div>;
-  // }
-  //
-  // return (
-  //   <div className="min-h-screen py-20">
-  //     <div className="container mx-auto px-4">
-  //       <article className="bg-white bg-opacity-80 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden">
-  //         <div className="relative h-96">
-  //           <Image
-  //             src={post.attributes.image.data.attributes.url}
-  //             alt={post.attributes.title}
-  //             layout="fill"
-  //             objectFit="cover"
-  //           />
-  //         </div>
-  //         <div className="p-8">
-  //           <Link href="/blog" className="text-primary-light hover:text-primary transition-colors duration-300 mb-4 inline-block">
-  //             ← Zpět na blog
-  //           </Link>
-  //           <span className="text-primary-light text-sm font-medium mb-2 block">{post.attributes.category}</span>
-  //           <h1 className="text-4xl font-spaceBold text-primary mb-4">{post.attributes.title}</h1>
-  //           <p className="text-sm font-raleway text-primary-light mb-8">
-  //             {post.attributes.date} | {post.attributes.author}
-  //           </p>
-  //           <div
-  //             className="font-raleway text-primary-light prose prose-lg max-w-none"
-  //             dangerouslySetInnerHTML={{ __html: post.attributes.content }}
-  //           />
-  //         </div>
-  //       </article>
-  //     </div>
-  //   </div>
-  // );
-  return <div>Test</div>;
+export async function generateStaticParams() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
