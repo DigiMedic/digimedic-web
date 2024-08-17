@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const API_URL = process.env.GHOST_API_URL || '';
 
 export async function getPosts() {
   console.log('Začínám načítat příspěvky');
@@ -10,14 +10,16 @@ export async function getPosts() {
       fields: ['id', 'title', 'slug', 'feature_image', 'excerpt', 'published_at', 'custom_excerpt']
     };
 
-    console.log('Odesílám požadavek na', `${API_URL}/api/ghost`);
-    console.log('Tělo požadavku:', JSON.stringify({ resource: 'posts', filter }));
-    const response = await fetch(`${API_URL}/api/ghost`, {
-      method: 'POST',
+    console.log('Odesílám požadavek na', `${API_URL}/ghost/api/v5.0/content/posts`);
+    console.log('Tělo požadavku:', JSON.stringify({ filter }));
+    const response = await fetch(`${API_URL}/ghost/api/v5.0/content/posts`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Accept-Version': 'v5.0',
+        'Key': process.env.GHOST_CONTENT_API_KEY || ''
       },
-      body: JSON.stringify({ resource: 'posts', filter })  
+      body: JSON.stringify({ filter })  
     });
 
     console.log('Odpověď přijata, status:', response.status);
@@ -28,7 +30,7 @@ export async function getPosts() {
       throw new Error(`Failed to fetch posts. Status: ${response.status}, Error: ${errorText}`);
     }
     
-    const posts = await response.json();
+    const { posts } = await response.json();
 
     console.log('Počet načtených příspěvků:', posts.length);
     if (posts.length > 0) {
@@ -53,14 +55,15 @@ export async function getSinglePost(postSlug: string) {
   console.log('API_URL:', API_URL);
   try {    
     const params = { slug: postSlug };
-    console.log('Odesílám požadavek na', `${API_URL}/api/ghost`);
-    console.log('Tělo požadavku:', JSON.stringify({ resource: 'post', params }));
-    const response = await fetch(`${API_URL}/api/ghost`, {
-      method: 'POST', 
+    console.log('Odesílám požadavek na', `${API_URL}/ghost/api/v5.0/content/posts`);
+    console.log('Parametry požadavku:', JSON.stringify({ params }));
+    const response = await fetch(`${API_URL}/ghost/api/v5.0/content/posts/${postSlug}`, {
+      method: 'GET', 
       headers: {
         'Content-Type': 'application/json',
+        'Accept-Version': 'v5.0',
+        'Key': process.env.GHOST_CONTENT_API_KEY || ''
       },
-      body: JSON.stringify({ resource: 'post', params })
     });
 
     console.log('Odpověď přijata, status:', response.status);
@@ -71,7 +74,7 @@ export async function getSinglePost(postSlug: string) {
       throw new Error(`Failed to fetch post. Status: ${response.status}, Error: ${errorText}`);
     }
     
-    const post = await response.json();
+    const { posts: [post] } = await response.json();
     
     console.log('Načtený příspěvek:', JSON.stringify(post, null, 2));
     
