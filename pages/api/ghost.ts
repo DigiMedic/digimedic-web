@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import GhostContentAPI from '@tryghost/content-api';
 
 const api = new GhostContentAPI({
@@ -6,7 +7,7 @@ const api = new GhostContentAPI({
   version: 'v5.0'
 });
 
-export default async function handler(req, res) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log('API Ghost handler - začátek');
   console.log('Metoda požadavku:', req.method);
   console.log('Hlavičky požadavku:', req.headers);
@@ -45,7 +46,11 @@ export default async function handler(req, res) {
     res.status(200).json(response); 
   } catch(err) {
     console.error(`Chyba při načítání ${resource}:`, err);
-    res.status(500).json({ message: `Chyba při načítání ${resource}`, error: err.message, stack: err.stack });
+    res.status(500).json({ 
+      message: `Chyba při načítání ${resource}`, 
+      error: (err as Error).message, 
+      stack: (err as Error).stack 
+    });
   }
 
   console.log('API Ghost handler - konec');

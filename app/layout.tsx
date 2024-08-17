@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ThemeProvider } from "@/components/theme-provider"
 import FloatingNavbar from '@/components/FloatingNavbar'
 import BackgroundGrid from '@/components/BackgroundGrid'
 import Header from '@/components/Header'
@@ -22,15 +21,13 @@ export default function RootLayout({
   return (
     <html lang="cs">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <BackgroundGrid />
-          <Header />
-          <FloatingNavbar />
-          <main className="min-h-screen relative">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+        <BackgroundGrid />
+        <Header />
+        <FloatingNavbar />
+        <main className="min-h-screen relative">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

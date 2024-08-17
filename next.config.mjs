@@ -7,6 +7,10 @@ const nextConfig = {
         hostname: 'digimedic-1.ghost.io',
       },
       {
+        protocol: 'https',
+        hostname: 'www.gravatar.com',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
         port: '3000',

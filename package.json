@@ -48,6 +48,7 @@
     "@types/react-dom": "^18",
     "@types/testing-library__jest-dom": "^5.14.9",
     "@types/testing-library__react": "^10.0.1",
+    "@types/tryghost__content-api": "^1.3.16",
     "@wixc3/react-board": "^3.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
