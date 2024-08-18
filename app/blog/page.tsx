@@ -32,8 +32,15 @@ interface BlogPost {
 }
 
 export default async function BlogPage() {
+  console.log('Začíná načítání stránky blogu');
+  console.log('GHOST_API_URL:', process.env.GHOST_API_URL);
+  console.log('GHOST_CONTENT_API_KEY je nastavený:', !!process.env.GHOST_CONTENT_API_KEY);
+
   try {
+    console.log('Volám getPosts funkci');
     const blogPosts = await getPosts() as BlogPost[];
+    console.log(`Načteno ${blogPosts.length} příspěvků`);
+    
     const featuredPost = blogPosts[0];
     const otherPosts = blogPosts.slice(1);
 
@@ -133,6 +140,9 @@ export default async function BlogPage() {
             Blog DigiMedic
           </h1>
           <p className="text-center text-2xl">Nastala chyba při načítání článků.</p>
+          <p className="text-center mt-4">
+            Chybová zpráva: {(err as Error).message}
+          </p>
         </div>
       </div>
     );  

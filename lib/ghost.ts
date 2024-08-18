@@ -1,36 +1,25 @@
+import GhostContentAPI from '@tryghost/content-api'
+
 const API_URL = process.env.GHOST_API_URL || '';
+const API_KEY = process.env.GHOST_CONTENT_API_KEY || '';
+
+const api = new GhostContentAPI({
+  url: API_URL,
+  key: API_KEY,
+  version: 'v5.0'
+});
 
 export async function getPosts() {
   console.log('Začínám načítat příspěvky');
   console.log('API_URL:', API_URL);
+  console.log('API_KEY je nastavený:', !!API_KEY);
   try {
-    const filter = { 
-      limit: 'all',
-      include: ['tags', 'authors'],
-      fields: ['id', 'title', 'slug', 'feature_image', 'excerpt', 'published_at', 'custom_excerpt']
-    };
-
-    console.log('Odesílám požadavek na', `${API_URL}/ghost/api/v5.0/content/posts`);
-    console.log('Tělo požadavku:', JSON.stringify({ filter }));
-    const response = await fetch(`${API_URL}/ghost/api/v5.0/content/posts`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept-Version': 'v5.0',
-        'Key': process.env.GHOST_CONTENT_API_KEY || ''
-      },
-      body: JSON.stringify({ filter })  
-    });
-
-    console.log('Odpověď přijata, status:', response.status);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Chybová odpověď:', errorText);
-      throw new Error(`Failed to fetch posts. Status: ${response.status}, Error: ${errorText}`);
-    }
-    
-    const { posts } = await response.json();
+    const posts = await api.posts
+      .browse({
+        limit: 'all',
+        include: ['tags', 'authors'],
+        fields: ['id', 'title', 'slug', 'feature_image', 'excerpt', 'published_at', 'custom_excerpt']
+      });
 
     console.log('Počet načtených příspěvků:', posts.length);
     if (posts.length > 0) {
@@ -39,7 +28,7 @@ export async function getPosts() {
       console.log('Žádné příspěvky nebyly načteny');
     }
     
-    if (!posts || !posts.length) {
+    if (!posts || posts.length === 0) {
       throw new Error('No posts found');
     }
     
@@ -53,28 +42,14 @@ export async function getPosts() {
 export async function getSinglePost(postSlug: string) {
   console.log('Začínám načítat jednotlivý příspěvek, slug:', postSlug);
   console.log('API_URL:', API_URL);
+  console.log('API_KEY je nastavený:', !!API_KEY);
   try {    
-    const params = { slug: postSlug };
-    console.log('Odesílám požadavek na', `${API_URL}/ghost/api/v5.0/content/posts`);
-    console.log('Parametry požadavku:', JSON.stringify({ params }));
-    const response = await fetch(`${API_URL}/ghost/api/v5.0/content/posts/${postSlug}`, {
-      method: 'GET', 
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept-Version': 'v5.0',
-        'Key': process.env.GHOST_CONTENT_API_KEY || ''
-      },
-    });
-
-    console.log('Odpověď přijata, status:', response.status);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Chybová odpověď:', errorText);
-      throw new Error(`Failed to fetch post. Status: ${response.status}, Error: ${errorText}`);
-    }
-    
-    const { posts: [post] } = await response.json();
+    const post = await api.posts
+      .read({
+        slug: postSlug
+      }, {
+        include: ['tags', 'authors']
+      });
     
     console.log('Načtený příspěvek:', JSON.stringify(post, null, 2));
     

@@ -17,13 +17,17 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       return <div>Post not found</div>;
     }
 
+    const formattedDate = post.published_at
+      ? new Date(post.published_at).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })
+      : 'Date unknown';
+
     return (
       <article className="max-w-3xl mx-auto px-4 py-12">
         {post.feature_image && (
           <div className="mb-8">
             <Image
               src={post.feature_image}
-              alt={post.title}
+              alt={post.title || 'Blog post image'}
               width={1200}
               height={630}
               layout="responsive"
@@ -34,15 +38,15 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{post.title}</h1>
         <div className="flex items-center mb-8 text-gray-600">
           <Image
-            src={post.primary_author.profile_image || '/default-avatar.png'}
-            alt={post.primary_author.name}
+            src={post.primary_author?.profile_image || '/default-avatar.png'}
+            alt={post.primary_author?.name || 'Author'}
             width={40}
             height={40}
             className="rounded-full mr-4"
           />
           <div>
-            <p className="font-semibold">{post.primary_author.name}</p>
-            <p>{new Date(post.published_at).toLocaleDateString('cs-CZ', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <p className="font-semibold">{post.primary_author?.name || 'Unknown Author'}</p>
+            <p>{formattedDate}</p>
           </div>
         </div>
         {post.custom_excerpt && (
@@ -50,7 +54,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         )}
         <div
           className="prose prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{ __html: post.html || '' }}
         />
         {post.tags && post.tags.length > 0 && (
           <div className="mt-12">

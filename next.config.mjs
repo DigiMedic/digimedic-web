@@ -4,7 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'testing.ghost.io',
+        hostname: 'digimedic-1.ghost.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.ghost.org',
       },
       {
         protocol: 'https',
